@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'my.email@gmail.com'
-EMAIL_HOST_PASSWORD = 'password'
+EMAIL_HOST_USER = 'myemail@gmail.com'
+EMAIL_HOST_PASSWORD = 'mypassword'
 
 # Application definition
 SITE_ID = 1
@@ -88,9 +88,9 @@ WSGI_APPLICATION = 'djangofirstproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'database name',
-        'USER': 'username',
-        'PASSWORD': 'password',
+        'NAME': 'blog',
+        'USER': 'blog',
+        'PASSWORD': 'mypassword',
         'PORT': 5432,
     }
 }

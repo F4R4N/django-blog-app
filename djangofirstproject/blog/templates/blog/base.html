@@ -2,37 +2,46 @@
 {% load blog_tags %}
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>{% block title %}{% endblock %}</title>
-    <link href='{% static " css/blog.css" %}" rel="stylesheet'>
+    <link rel="stylesheet" type="text/css" href='{% static "css/blog.css" %}'>
+    <link rel="stylesheet" href="{% static 'fontawesome-free-5.12.1-web/css/all.css' %}">
 </head>
-<body>
-<div class="search">
-    <a href="{% url 'blog:post_search' %}">search</a>
-</div>
-<div id="content">
-    {% block content %}
-    {% endblock %}
-</div>
-<div id="sidebar">
-    <h2>My blog</h2>
-    <p>This is my blog and Ive written {% total_posts %}in it</p>
-    <h3>Latest Posts</h3>
-    {% show_latest_posts 4 %}
 
-    <h3>Most commented posts</h3>
-    {% most_commented_posts as most_commented_posts %}
-    <ul>
-        {% for post in most_commented_posts %}
+<body>
+    <ul class="navbar">
+        <li><a href="{% url 'blog:post_list' %}">Home</a></li>
+        <li><a href="{% url 'blog:post_search' %}">Search</a></li>
+        <li><a href=""></a></li>
+    </ul>
+
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div id="sidebar">
+        <h2>My blog</h2>
+        <p>This is my blog and Ive written {% total_posts %} posts in it</p>
+        <hr>
+        <h3>Latest Posts</h3>
+        {% show_latest_posts 4 %}
+<hr>
+        <h3>Most commented posts</h3>
+        {% most_commented_posts as most_commented_posts %}
+        <ul>
+            {% for post in most_commented_posts %}
             <li>
                 <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
             </li>
-        {% endfor %}
-    </ul>
-    <p>This is my blog.</p>
-    <p>
-        <a href="{% url 'blog:post_feed' %}">my RSS feed</a>
-    </p>
-</div>
+            {% endfor %}
+        </ul>
+        
+        <p>
+            <hr>
+            <a href="{% url 'blog:post_feed' %}">my RSS feed</a>
+        </p>
+    </div>
 </body>
+
 </html>

@@ -13,13 +13,18 @@
     Found {{ total_results }} result{{ total_results|pluralize }}
     {% endwith %}
 </h3>
-{% for post in results %}
-<h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
-{{ post.body|markdown|truncatewords_html:10 }}
-{% empty %}
-<p>There are no results for your query.</p>
-{% endfor %}
 
+{% for post in results %}
+<div class="list">
+
+    <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+    {{ post.body|markdown|truncatewords_html:10 }}
+    <!-- <hr> -->
+</div>
+
+    {% empty %}
+    <p>There are no results for your query.</p>
+{% endfor %}
 {% else %}
 <h1>Search for posts</h1>
 

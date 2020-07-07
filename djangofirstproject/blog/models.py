@@ -52,3 +52,8 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'comment by {self.name} on {self.post}'
+
+class NewsLetter(models.Model):
+    name = models.CharField(max_length=60)
+    last_name = models.CharField(max_length=60)
+    email = models.EmailField()
