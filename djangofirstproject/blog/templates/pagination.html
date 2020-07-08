@@ -1,25 +1,26 @@
+<br>
 <div class="pagination">
-    <!-- <span class="step-links"> -->
+    <span class="step-links">
         {% if page.has_other_pages %}
         <ul class="pagination-ul">
             {% if page.has_previous %}
-            <li><a href="?page={{ page.previous_page_number }}">&laquo;</a></li>
+            <li title="previous page"><a href="?page={{ page.previous_page_number }}">&laquo;</a></li>
             {% else %}
             <li class="disabled"><span>&laquo;</span></li>
             {% endif %}
             {% for i in page.paginator.page_range %}
             {% if page.number == i %}
-            <li class="active"><span>{{ i }} <span class="sr-only"></span></span></li>
+            <li class="active"><span>{{ i }} </span></li>
             {% else %}
-            <li><a href="?page={{ i }}">{{ i }}</a></li>
+            <li title="Page {{ i }}"><a href="?page={{ i }}">{{ i }}</a></li>
             {% endif %}
             {% endfor %}
             {% if page.has_next %}
-            <li><a href="?page={{ page.next_page_number }}">&raquo;</a></li>
+            <li title="next page"><a href="?page={{ page.next_page_number }}">&raquo;</a></li>
             {% else %}
             <li class="disabled"><span>&raquo;</span></li>
             {% endif %}
         </ul>
         {% endif %}
-    <!-- </span> -->
+    </span>
 </div>

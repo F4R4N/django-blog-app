@@ -13,6 +13,11 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('name', 'email', 'body')
+        widgets = {
+            'name': forms.TextInput(attrs={'placeholder': 'Name', 'id': 'comment-name'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'Email', 'id': 'comment-email'}),
+            'body': forms.Textarea(attrs={'placeholder': 'comment body . . . ', 'id': 'comment-body'})
+        }
 
 
 class SearchForm(forms.Form):

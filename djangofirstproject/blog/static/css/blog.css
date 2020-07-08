@@ -101,27 +101,72 @@ li a:hover {
     transition: 0.3s;
 }
 .pagination{
-    margin: 20px 40%;
+    margin: 20px 30%;
     text-align: center;
     /* overflow: hidden; */
 }
 
+ul.pagination-ul{
+    display: flex;
+}
 #content a:hover{
     color: #268adb;
-
 }
-
 .pagination li{
     float: left;
-}
-.pagination li a, span{
-    padding: 10px;
-    background: rgb(255, 255, 255);
+    /* border: 1px solid #ddd; */
+    /* padding: 16px 23px; */
     
 }
-.search-list{
-    border: 1px solid #444;
+.pagination li a{
+    border: 1px solid #ddd;
+    display: block;
+    padding: 16px 20px;
+    /* background: #ddd; */
+}
+.pagination li span{
+    border: 1px solid #ddd;
+
+    display: block;
+    padding: 16px 20px;
+    /* padding: 20px 12px; */
+    /* background: #ddd; */
+}
+.pagination li a:hover{
+    background: #ddd;
+    color: #268adb;
 }
 .date{
+    color: #aaa;
+}
+.step-link{
+    background: none;
+}
+#comment-name, #comment-email{
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 6px;
+}
+#comment-body{
+    font-size: 18px;
+    border: 2px black solid;
+    border-radius: 5px;
+    width: 40%;
+    height: 150px;
+}
+#cmnt-btn{
+    padding: 5px;
+    background: #eee;
+    border-radius: 5px;
+}
+.comment{
+    border: 2px #ddd solid;
+    border-radius: 2px;
+    padding: 10px;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    text-align: left;
+}
+.comment .info i{
     color: #aaa;
 }

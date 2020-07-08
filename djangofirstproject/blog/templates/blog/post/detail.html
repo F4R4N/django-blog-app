@@ -6,6 +6,8 @@
 <p class="date">
     Published {{ post.publish }} by {{ post.author }}
 </p>
+<hr>
+
 {{ post.body|markdown }}
 <p>
     <a href="{% url 'blog:post_share' post.id %}">
@@ -13,33 +15,14 @@
     </a>
 </p>
 
-<h2>Similar posts</h2>
+<h2>you might like</h2>
 {% for post in similar_posts %}
     <p>
         <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
     </p>
     {% empty %}
-        There are no similar posts yet.
-{% endfor %}
-
-{% with comments.count as total_comments %}
-    <h2>
-        {{ total_comments }} comment{{ total_comments|pluralize }}
-    </h2>
-{% endwith %}
-
-{% for comment in comments %}
-    <div class="comment">
-        <p class="info">
-            Comment {{ forloop.counter }} by {{ comment.name }}
-            {{ comment.created }}
-        </p>
-        {{ comment.body|linebreaks }}
-    </div>
-
-{% empty %}
-    <p>There are no comments yet.</p>
-
+        <br>
+        <!-- There are no similar posts yet. -->
 {% endfor %}
 
 {% if new_comment %}
@@ -49,8 +32,27 @@
     <form method="post">
         {{ comment_form.as_p }}
         {% csrf_token %}
-        <p><input type="submit" value="Add comment"></p>
+        <p><input id="cmnt-btn" type="submit" value="Add comment"></p>
     </form>
 {% endif %}
+<hr>
+{% with comments.count as total_comments %}
+    <h2>
+        {{ total_comments }} comment{{ total_comments|pluralize }}
+    </h2>
+{% endwith %}
+
+{% for comment in comments %}
+    <div class="comment">
+        <p class="info">
+            <i>Comment</i> {{ forloop.counter }} <i>by</i> {{ comment.name }} <i>in </i>{{ comment.created }}
+        </p>
+        {{ comment.body|linebreaks }}
+    </div>
+
+{% empty %}
+    <p>There are no comments yet.</p>
+
+{% endfor %}
 
 {% endblock %}

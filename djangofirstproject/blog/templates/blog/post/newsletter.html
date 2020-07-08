@@ -1,0 +1,10 @@
+{% extends "blog/base.html" %}
+{% load blog_tags %}
+{% block title %}Register Newsletter{% endblock %}
+{% block content %}
+<form method="post">
+    {{ register_form.as_p }}
+    {% csrf_token %}
+    <input type="submit" value="Search">
+</form>
+{% endblock %}

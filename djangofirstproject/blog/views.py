@@ -86,11 +86,17 @@ def post_detail(request, year, month, day, post):
                                                      'comment_form': comment_form,
                                                      'similar_posts': similar_posts, })
 def newsletter(request):
+    new_user = None
     if request.method == 'POST':
         signin_form = News(data=request.POST)
         if signin_form.is_valid():
-            new_user = signin_form.save(commit=True)
+            new_user = signin_form.save(commit=False)
+            signin_form.save()
+            name = signin_form.cleaned_data.get('name')
+            last_name = signin_form.cleaned_data.get('last_name')
+            email = signin_form.cleaned_data.get('email')
     else:
         signin_form = News()
+    return render(request, 'blog/post/newsletter.html', {'register_form': signin_form})
     
     
