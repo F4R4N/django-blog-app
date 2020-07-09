@@ -7,8 +7,10 @@
     Published {{ post.publish }} by {{ post.author }}
 </p>
 <hr>
+<div class="body">
+    {{ post.body|markdown }}
+</div>
 
-{{ post.body|markdown }}
 <p>
     <a href="{% url 'blog:post_share' post.id %}">
         share the post
@@ -17,41 +19,44 @@
 
 <h2>you might like</h2>
 {% for post in similar_posts %}
-    <p>
-        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-    </p>
-    {% empty %}
-        <br>
-        <!-- There are no similar posts yet. -->
+<p>
+    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+</p>
+{% empty %}
+<br>
+<!-- There are no similar posts yet. -->
 {% endfor %}
 
 {% if new_comment %}
-    <h2>Your comment has been added.</h2>
+<h2>Your comment has been added.</h2>
 {% else %}
-    <h2>Add a new comment</h2>
-    <form method="post">
-        {{ comment_form.as_p }}
-        {% csrf_token %}
-        <p><input id="cmnt-btn" type="submit" value="Add comment"></p>
-    </form>
+<div class="comment-add">
+    <div class="wrapper">
+        <h2>Add a new comment</h2>
+        <form class="news" method="post">
+            {{ comment_form.as_p }}
+            {% csrf_token %}
+            <p><input id="cmnt-btn" type="submit" value="Add comment"></p>
+        </form>
+    </div>
+</div>
 {% endif %}
-<hr>
 {% with comments.count as total_comments %}
-    <h2>
-        {{ total_comments }} comment{{ total_comments|pluralize }}
-    </h2>
+<h2>
+    {{ total_comments }} comment{{ total_comments|pluralize }}
+</h2>
 {% endwith %}
 
 {% for comment in comments %}
-    <div class="comment">
-        <p class="info">
-            <i>Comment</i> {{ forloop.counter }} <i>by</i> {{ comment.name }} <i>in </i>{{ comment.created }}
-        </p>
-        {{ comment.body|linebreaks }}
-    </div>
+<div class="comment">
+    <p class="info">
+        <i>Comment</i> {{ forloop.counter }} <i>by</i> {{ comment.name }} <i>in </i>{{ comment.created }}
+    </p>
+    {{ comment.body|linebreaks }}
+</div>
 
 {% empty %}
-    <p>There are no comments yet.</p>
+<p>There are no comments yet.</p>
 
 {% endfor %}
 

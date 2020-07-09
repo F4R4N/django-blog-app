@@ -73,7 +73,7 @@ li a:hover {
 #sidebar{
     top: 60px;
     right: 0;
-    width: 25%;
+    width: 20%;
     float: right;
     position: fixed;
     padding: 10px;
@@ -147,12 +147,13 @@ ul.pagination-ul{
     font-size: 16px;
     padding: 6px;
 }
-#comment-body{
+.comment-body{
     font-size: 18px;
     border: 2px black solid;
     border-radius: 5px;
     width: 40%;
     height: 150px;
+    max-width: 100%;
 }
 #cmnt-btn{
     padding: 5px;
@@ -169,4 +170,24 @@ ul.pagination-ul{
 }
 .comment .info i{
     color: #aaa;
+}
+.comment-add{
+    border: 2px #aaa solid;
+    border-radius: 5px;
+}
+.wrapper{
+    padding: 10px;
+}
+.body{
+
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+    line-height: 30px;
+
+}
+.errorlist li{
+    color: red;
+}
+.news label {
+    display: none;
 }

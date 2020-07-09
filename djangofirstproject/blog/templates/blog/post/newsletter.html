@@ -2,9 +2,9 @@
 {% load blog_tags %}
 {% block title %}Register Newsletter{% endblock %}
 {% block content %}
-<form method="post">
+<form class="news" method="post">
     {{ register_form.as_p }}
     {% csrf_token %}
-    <input type="submit" value="Search">
+    <input type="submit" value="register">
 </form>
 {% endblock %}

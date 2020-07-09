@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'myemail@gmail.com'
-EMAIL_HOST_PASSWORD = 'mypassword'
+EMAIL_HOST_USER = 'pythontestsendingemail@gmail.com'
+EMAIL_HOST_PASSWORD = 'farantgh1224'
 
 # Application definition
 SITE_ID = 1
