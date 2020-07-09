@@ -1,2 +1,2 @@
 # django-blog-app
-django app not finished yet.
+a personal blog app written in django.
