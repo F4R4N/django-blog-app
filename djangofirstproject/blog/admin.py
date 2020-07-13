@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment, NewsLetterSubscriber
+from .models import Post, Comment,Subscriber
 
 
 # admin.site.register(Post)
@@ -20,6 +20,9 @@ class CommentAdmin(admin.ModelAdmin):
     list_filter = ('active', 'created', 'updated')
     search_fields = ('name', 'email', 'body')
 
-@admin.register(NewsLetterSubscriber)
-class Subscribers(admin.ModelAdmin):
-    list_display = ('name', 'last_name', 'email')
+@admin.register(Subscriber)
+class SubscriberShow(admin.ModelAdmin):
+    list_display = ('name', 'email', 'date', 'status')
+
+
+

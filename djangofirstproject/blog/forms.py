@@ -1,5 +1,5 @@
 from django import forms
-from .models import Comment, NewsLetterSubscriber
+from .models import Comment, Subscriber
 
 
 class EmailPostForm(forms.Form):
@@ -25,10 +25,9 @@ class SearchForm(forms.Form):
 
 class News(forms.ModelForm):
     class Meta:
-        model = NewsLetterSubscriber
-        fields = ('name', 'last_name', 'email')
+        model = Subscriber
+        fields = ('name', 'email')
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'Name'}),
-            'last_name': forms.TextInput(attrs={'placeholder': 'LastName'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Email'})
         }

@@ -53,8 +53,18 @@ class Comment(models.Model):
     def __str__(self):
         return f'comment by {self.name} on {self.post}'
 
-class NewsLetterSubscriber(models.Model):
+class Subscriber(models.Model):
+    STATUS_CHOICES = (
+        ('active', 'Active'),
+        ('notactive', 'NotActive')
+    )
     name = models.CharField(max_length=60)
-    last_name = models.CharField(max_length=60)
     email = models.EmailField(unique=True)
+    date = models.DateTimeField(auto_now=True)
+    status = models.CharField(max_length=10, choices= STATUS_CHOICES, default='active')
+
+class ActiveManager(models.Manager):
+    def get_queryset(self):
+        return super(ActiveManager, self).get_queryset().filter(status='active')
+
 

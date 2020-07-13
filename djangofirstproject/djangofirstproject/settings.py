@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'pythontestsendingemail@gmail.com'
-EMAIL_HOST_PASSWORD = 'farantgh1224'
+EMAIL_HOST_USER = os.environ.get('PTSEENV')
+EMAIL_HOST_PASSWORD = os.environ.get('PTSEPENV')
 
 # Application definition
 SITE_ID = 1
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.postgres',
-
+    'newsletter',
 ]
 
 MIDDLEWARE = [
@@ -90,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'blog',
         'USER': 'blog',
-        'PASSWORD': 'mypassword',
+        'PASSWORD': os.environ.get("SERVERPASS"),
         'PORT': 5432,
     }
 }
