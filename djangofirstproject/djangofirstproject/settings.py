@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.postgres',
-    'newsletter',
 ]
 
 MIDDLEWARE = [
@@ -91,6 +90,7 @@ DATABASES = {
         'NAME': 'blog',
         'USER': 'blog',
         'PASSWORD': os.environ.get("SERVERPASS"),
+        'HOST': 'localhost',
         'PORT': 5432,
     }
 }

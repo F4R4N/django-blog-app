@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+{% load blog_tags %}
+{% block title %}My{% endblock %}
+{% block archive %}
+<ul>
+<hr>
+    {% for year in years %}
+        <li>
+            <a href="{{ url 'blog:archive' year }}">{{ year }}</a>
+        </li>        
+    {% endfor %}
+</ul>
+
+{% endblock %}

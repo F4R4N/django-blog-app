@@ -33,6 +33,7 @@ class Post(models.Model):
                              self.publish.month,
                              self.publish.day,
                              self.slug])
+    
 
     class Meta:
         ordering = ('-publish',)
@@ -67,4 +68,6 @@ class ActiveManager(models.Manager):
     def get_queryset(self):
         return super(ActiveManager, self).get_queryset().filter(status='active')
 
+
+# class YearArchive(models.Model):
 

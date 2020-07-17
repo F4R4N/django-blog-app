@@ -75,7 +75,7 @@ li a:hover {
     right: 0;
     width: 20%;
     float: right;
-    position: fixed;
+    position: relative;
     padding: 10px;
     border-left: 1px #ddd solid;
 }

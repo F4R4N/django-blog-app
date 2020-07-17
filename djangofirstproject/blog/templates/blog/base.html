@@ -25,6 +25,7 @@
         <h2>My blog</h2>
         <p>This is my blog and Ive written {% total_posts %} posts in it</p>
         <hr>
+        
         <h3>Latest Posts</h3>
         {% show_latest_posts 4 %}
 <hr>
@@ -37,11 +38,15 @@
             </li>
             {% endfor %}
         </ul>
-        
+       
         <p>
             <hr>
             <a href="{% url 'blog:post_feed' %}">my RSS feed</a>
         </p>
+        <div class="archives">
+            {% block archive %}
+            {% endblock %}
+        </div> 
     </div>
 </body>
 

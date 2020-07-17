@@ -8,7 +8,7 @@ from django.db.models import Count
 from django.contrib.postgres.search import TrigramSimilarity
 
 
-def post_list(request, tag_slug=None):
+def post_list(request, tag_slug=None, year=None):
     object_list = Post.published.all()
     tag = None
     if tag_slug:
@@ -54,8 +54,10 @@ def post_search(request):
         form = SearchForm(request.GET)
         if form.is_valid():
             query = form.cleaned_data['query']
-            results = Post.published.annotate(similarity=TrigramSimilarity('title', query),).filter(similarity__gt=0.3).order_by('-similarity')
+            results = Post.published.annotate(similarity=TrigramSimilarity('title', query,)).filter(
+                similarity__gt=0.3).order_by('-similarity')
     return render(request, 'blog/post/search.html', {'form': form, 'query': query, 'results': results})
+
 
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(Post, slug=post,
@@ -85,6 +87,8 @@ def post_detail(request, year, month, day, post):
                                                      'new_comment': new_comment,
                                                      'comment_form': comment_form,
                                                      'similar_posts': similar_posts, })
+
+
 def newsletter(request):
     new_user = None
     if request.method == 'POST':
@@ -98,5 +102,15 @@ def newsletter(request):
     else:
         signin_form = News()
     return render(request, 'blog/post/newsletter.html', {'register_form': signin_form})
+
+def archive(request):
+    post = Post.published.all()
+    container = []
+    for p in post:
+        container.append(p.publish.year)
+    container = list(set(container))
+    return render(request, 'blog/post/archive.html', {'years': container})
+
+
     
-    
+
