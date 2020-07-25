@@ -69,5 +69,3 @@ class ActiveManager(models.Manager):
         return super(ActiveManager, self).get_queryset().filter(status='active')
 
 
-# class YearArchive(models.Model):
-

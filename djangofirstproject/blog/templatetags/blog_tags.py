@@ -37,3 +37,7 @@ def archive():
 		list_years.append(post.publish.year)
 	list_years = list(set(list_years))
 	return {'posts': list_years}
+
+@register.inclusion_tag('blog/post/tag_list.html')
+def tag_list():
+	

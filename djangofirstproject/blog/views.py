@@ -8,12 +8,15 @@ from django.db.models import Count
 from django.contrib.postgres.search import TrigramSimilarity
 
 
-def post_list(request, tag_slug=None, year=None):
+def post_list(request, tag_slug=None, year_archive=None):
     object_list = Post.published.all()
     tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
         object_list = object_list.filter(tags__in=[tag])
+
+    if year_archive:
+        object_list = object_list.filter(publish__year=year_archive)
 
     paginator = Paginator(object_list, 5)
     page = request.GET.get('page')
@@ -26,7 +29,7 @@ def post_list(request, tag_slug=None, year=None):
     # posts = Post.published.all()
 
     return render(request, 'blog/post/list.html',
-                  {'page': page, 'posts': posts, 'tag': tag, 'paginator': paginator})
+                  {'page': page, 'posts': posts, 'tag': tag, 'paginator': paginator, 'year': year_archive})
 
 
 def post_share(request, post_id):

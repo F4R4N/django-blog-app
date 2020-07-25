@@ -6,6 +6,9 @@
     {% if tag %}
     <h2>related posts: "{{ tag.name }}"</h2>
     {% endif %}
+    {% if year %}
+    <h2>posts published in: "{{ year }}"</h2>
+    {% endif %}
     {% for post in posts %}
         <div class="list">
 

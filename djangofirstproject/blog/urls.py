@@ -13,7 +13,7 @@ urlpatterns = [
     path('feed/', LatestPostFeed(), name='post_feed'),
     path('search/', views.post_search, name='post_search'),
     path('newsletter/', views.newsletter, name='news_letter'),
-    path('archive/<int:year>', views.post_list, name='archive'),
+    path('archive/<int:year_archive>', views.post_list, name='archive'),
 
 
 ]

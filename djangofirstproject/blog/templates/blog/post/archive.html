@@ -4,7 +4,7 @@
 <ul>
     {% for post in posts reversed %}
         <li class="archive-date">
-            <a href="#">{{ post }}</a>
+            <a href="{% url 'blog:archive' post %}">{{ post }}</a>
         </li>        
     {% endfor %}
 </ul>
