@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href='{% static "css/blog.css" %}'>
@@ -43,13 +44,13 @@
             <hr>
             <a href="{% url 'blog:post_feed' %}">my RSS feed</a>
         </p>
-        <hr>
+        <div class="tag_list">
+            {% tag_list %}
+        </div>        
         <div class="archives">
             {% archive %}
         </div> 
-        <div class="tag_list">
-            {% tag_list %}
-        </div>
+
     </div>
 </body>
 

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<div class="tags">
+		<h3>Tags</h3>
+        <hr>
+
+		<ul>
+			{% for tag in tag_dict %}
+				<li class="archive-date">
+				 <a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }} ({{ tag.num_times }})</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+</body>
+</html>

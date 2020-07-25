@@ -40,4 +40,8 @@ def archive():
 
 @register.inclusion_tag('blog/post/tag_list.html')
 def tag_list():
+	tags = Post.tags.all()
+	repeatation = tags.annotate(num_times=Count('taggit_taggeditem_items'))
+
+	return {'tags': tags, 'tag_dict': repeatation}
 	
