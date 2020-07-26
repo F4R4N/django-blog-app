@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 from django.conf.urls import url
 from . import views
 from .feeds import LatestPostFeed
@@ -14,6 +14,7 @@ urlpatterns = [
     path('search/', views.post_search, name='post_search'),
     path('newsletter/', views.newsletter, name='news_letter'),
     path('archive/<int:year_archive>', views.post_list, name='archive'),
+    # path('search/', views.post_list, name='search')
 
 
 ]

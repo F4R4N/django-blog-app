@@ -198,3 +198,8 @@ ul.pagination-ul{
 .list{
     line-height: 35px;
 }
+.search{
+    float: right;
+    padding-top: 10px;
+    margin: 0;
+}
