@@ -7,7 +7,7 @@
 <head>
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href='{% static "css/blog.css" %}'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/fontawesome-free-5.12.1-web/css/all.css' %}">
 
 </head>
 
@@ -17,7 +17,7 @@
         <li><a href="{% url 'blog:news_letter' %}">News Letter</a></li>
         <li class="search">
             <form action="{% url 'blog:post_search' %}" method="get">
-                <input name="query" type="search">
+                <input class="search-input" name="query" type="search" placeholder="&#xf002; Search ">
                 <button type="submit"><i class="fas fa-search"></i></button>
             </form>
         </li>
@@ -39,7 +39,7 @@
         {% most_commented_posts as most_commented_posts %}
         <ul>
             {% for post in most_commented_posts %}
-            <li>
+            <li class="archive-date">
                 <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
             </li>
             {% endfor %}

@@ -3,12 +3,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
 </head>
 <body>
 <ul>
     {% for post in latest_posts %}
-        <li>
+        <li class="archive-date">
             <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
         </li>
     {% endfor %}

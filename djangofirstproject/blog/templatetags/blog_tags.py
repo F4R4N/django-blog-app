@@ -43,5 +43,5 @@ def tag_list():
 	tags = Post.tags.all()
 	repeatation = tags.annotate(num_times=Count('taggit_taggeditem_items'))
 
-	return {'tags': tags, 'tag_dict': repeatation}
+	return {'tags': tags, 'number_of_tags': repeatation}
 	

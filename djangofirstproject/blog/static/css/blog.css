@@ -195,6 +195,9 @@ ul.pagination-ul{
     padding: 5px;
 
 }
+.archive-date ul li {
+    padding: 5px;
+}
 .list{
     line-height: 35px;
 }
@@ -202,4 +205,8 @@ ul.pagination-ul{
     float: right;
     padding-top: 10px;
     margin: 0;
+}
+.search-input{
+    font-family: 'FontAwesome\ 5 Free';
+    font-weight: 900;
 }
