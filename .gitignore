@@ -1,4 +1,3 @@
-/djangofirstproject/djangofirstproject/*
-
-/djangofirstproject/blog/__pycache__/*
-/djangofirstproject/blog/migrations/*
+djangofirstproject/djangofirstproject/*
+djangofirstproject/blog/__pycache__/*
+djangofirstproject/blog/migrations/*
