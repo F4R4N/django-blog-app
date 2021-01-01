@@ -41,7 +41,7 @@ def post_share(request, post_id):
             cd = form.cleaned_data
             post_url = request.build_absolute_uri(post.get_absolute_url())
             subject = f"{cd['name']} recommends you read {post.title}"
-            message = f"read {post.title} at {post_url}\n\n{cd['name']}\'s comments: {cd['comments']}"
+            message = f"read {post.title} at {post_url}\n\n{cd['name']}\'s shared this post and sayed: {cd['comments']}"
             send_mail(subject, message, 'pythontestsendingemail@gmail.com', [cd['to']])
             sent = True
     else:
@@ -68,16 +68,18 @@ def post_detail(request, year, month, day, post):
                              publish__year=year,
                              publish__month=month,
                              publish__day=day)
+    post.visits = post.visits + 1
+    post.save()
 
     comments = post.comments.filter(active=True)
     new_comment = None
-
+    
     if request.method == 'POST':
-        comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            new_comment = comment_form.save(commit=False)
-            new_comment.post = post
-            new_comment.save()
+    	comment_form = CommentForm(data=request.POST)
+    	if comment_form.is_valid():
+    		new_comment = comment_form.save(commit=False)
+    		new_comment.post = post
+    		new_comment.save()
     else:
         comment_form = CommentForm()
 

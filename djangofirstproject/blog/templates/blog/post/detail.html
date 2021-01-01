@@ -17,7 +17,7 @@
     </a>
 </p>
 
-<h2>you might like</h2>
+<h2>you might also like</h2>
 {% for post in similar_posts %}
 <p>
     <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
@@ -29,6 +29,7 @@
 
 {% if new_comment %}
 <h2>Your comment has been added.</h2>
+
 {% else %}
 <div class="comment-add">
     <div class="wrapper">

@@ -1,0 +1,13 @@
+{% extends "blog/base.html" %}
+{% block title %}share the post{% endblock %}
+{% block content %}
+{% if sent %}
+<h1>post shared ! </h1>
+{% else %}
+<form class="news" method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <p><input id="cmnt-btn" type="submit" value="Add comment"></p>
+</form>
+{% endif %}
+{% endblock %}

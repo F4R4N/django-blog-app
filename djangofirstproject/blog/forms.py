@@ -4,8 +4,8 @@ from .models import Comment, Subscriber
 
 class EmailPostForm(forms.Form):
     name = forms.CharField(max_length=25, label='', widget=forms.TextInput(attrs={'placeholder': "name"}))
-    email = forms.EmailField(label='', widget=forms.EmailInput(attrs={'placeholder': "email"}))
-    to = forms.EmailField(label='', widget=forms.EmailInput(attrs={'placeholder': "email"}))
+    email = forms.EmailField(label='', widget=forms.EmailInput(attrs={'placeholder': "your email"}))
+    to = forms.EmailField(label='', widget=forms.EmailInput(attrs={'placeholder': "target email"}))
     comments = forms.CharField(required=False, widget=forms.Textarea(attrs={'placeholder': 'your comment body (optional)', 'class': 'comment-body'}), label='')
 
 

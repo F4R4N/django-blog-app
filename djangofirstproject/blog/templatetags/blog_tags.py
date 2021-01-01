@@ -23,6 +23,9 @@ def show_latest_posts(count=5):
 def most_commented_posts(count=5):
     return Post.published.annotate(total_comments=Count('comments')).order_by('-total_comments')[:count]
 
+@register.simple_tag
+def most_viewed_posts(count=5):
+	return Post.published.all().order_by('-visits')[:count]
 
 @register.filter(name='markdown')
 def markdown_format(text):

@@ -24,7 +24,7 @@ class Post(models.Model):
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     objects = models.Manager()
     published = PublishedManager()
-
+    visits = models.IntegerField(default=0, null=True, blank=True)
     tags = TaggableManager()
 
     def get_absolute_url(self):

@@ -30,6 +30,7 @@
             <p class="date">
                 Published {{ post.publish }} by {{ post.author }}
             </p>
+            <p>Views : {{ post.visits }}</p>
                 {{ post.body|markdown|truncatewords_html:50 }}
         </div>
 

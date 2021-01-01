@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
+
 EMAIL_HOST_USER = os.environ.get('PTSEENV')
 EMAIL_HOST_PASSWORD = os.environ.get('PTSEPENV')
 
@@ -88,7 +89,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'blog',
-        'USER': 'blog',
+        'USER': 'postgres',
         'PASSWORD': os.environ.get("SERVERPASS"),
         'HOST': 'localhost',
         'PORT': 5432,
