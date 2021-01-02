@@ -139,6 +139,7 @@ ul.pagination-ul{
 .date{
     color: #aaa;
     margin: 0px 0px;
+    padding-bottom: 15px;
 }
 .step-link{
     background: none;

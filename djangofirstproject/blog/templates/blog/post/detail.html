@@ -3,9 +3,12 @@
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
 <h1>{{ post.title }}</h1>
+
 <p class="date">
     Published {{ post.publish }} by {{ post.author }}
 </p>
+<hr>
+<img src="{{ post.image.url }}" width="940px">
 <hr>
 <div class="body">
     {{ post.body|markdown }}
@@ -20,8 +23,9 @@
 <h2>you might also like</h2>
 {% for post in similar_posts %}
 <p>
-    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+    <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1> 
 </p>
+
 {% empty %}
 <br>
 <!-- There are no similar posts yet. -->

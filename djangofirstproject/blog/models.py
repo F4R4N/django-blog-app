@@ -3,6 +3,10 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 from taggit.managers import TaggableManager
+import datetime
+
+def user_path(instance, filename):
+    return '{0}/'.format(filename)
 
 class PublishedManager(models.Manager):
     def get_queryset(self):
@@ -14,7 +18,7 @@ class Post(models.Model):
         ('draft', 'Draft'),
         ('published', 'Published'),
     )
-    # image = 
+
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique_for_date='publish')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
@@ -27,6 +31,8 @@ class Post(models.Model):
     published = PublishedManager()
     visits = models.IntegerField(default=0, null=True, blank=True)
     tags = TaggableManager()
+    image = models.ImageField(upload_to=user_path)
+
     # likes = models.ManyToManyField(slug, related_name='likes')
 
     # @property
