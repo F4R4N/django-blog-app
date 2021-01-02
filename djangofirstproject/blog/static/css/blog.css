@@ -138,6 +138,7 @@ ul.pagination-ul{
 }
 .date{
     color: #aaa;
+    margin: 0px 0px;
 }
 .step-link{
     background: none;
@@ -209,4 +210,10 @@ ul.pagination-ul{
 .search-input{
     font-family: 'FontAwesome\ 5 Free';
     font-weight: 900;
+}
+.view{
+    font-size: 13px;
+    margin: 0px 10px;
+    color: #999;
+    line-height: 5px;
 }

@@ -14,6 +14,7 @@ class Post(models.Model):
         ('draft', 'Draft'),
         ('published', 'Published'),
     )
+    # image = 
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique_for_date='publish')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
@@ -26,6 +27,13 @@ class Post(models.Model):
     published = PublishedManager()
     visits = models.IntegerField(default=0, null=True, blank=True)
     tags = TaggableManager()
+    # likes = models.ManyToManyField(slug, related_name='likes')
+
+    # @property
+    # def total_likes(self):
+    #     return self.likes.count()
+    
+
 
     def get_absolute_url(self):
         return reverse('blog:post_detail',
@@ -54,18 +62,17 @@ class Comment(models.Model):
     def __str__(self):
         return f'comment by {self.name} on {self.post}'
 
+
 class Subscriber(models.Model):
-    STATUS_CHOICES = (
-        ('active', 'Active'),
-        ('notactive', 'NotActive')
-    )
+    
     name = models.CharField(max_length=60)
     email = models.EmailField(unique=True)
     date = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=10, choices= STATUS_CHOICES, default='active')
+    active = models.BooleanField(default=True)
 
-class ActiveManager(models.Manager):
-    def get_queryset(self):
-        return super(ActiveManager, self).get_queryset().filter(status='active')
+class Newsletter(models.Model):
+    subject = models.CharField(max_length=200)
+    body = models.TextField()
+
 
 

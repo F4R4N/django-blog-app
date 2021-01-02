@@ -1,12 +1,14 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post, Comment
+from .models import Post, Comment, Subscriber
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import EmailPostForm, CommentForm, SearchForm, News
 from django.core.mail import send_mail
 from taggit.models import Tag
 from django.db.models import Count
 from django.contrib.postgres.search import TrigramSimilarity
+import os
 
+my_email = os.environ.get('PTSEENV')
 
 def post_list(request, tag_slug=None, year_archive=None):
     object_list = Post.published.all()
@@ -42,7 +44,7 @@ def post_share(request, post_id):
             post_url = request.build_absolute_uri(post.get_absolute_url())
             subject = f"{cd['name']} recommends you read {post.title}"
             message = f"read {post.title} at {post_url}\n\n{cd['name']}\'s shared this post and sayed: {cd['comments']}"
-            send_mail(subject, message, 'pythontestsendingemail@gmail.com', [cd['to']])
+            send_mail(subject, message, my_email, [cd['to']])
             sent = True
     else:
         form = EmailPostForm()
@@ -104,6 +106,9 @@ def newsletter(request):
             name = signin_form.cleaned_data.get('name')
             last_name = signin_form.cleaned_data.get('last_name')
             email = signin_form.cleaned_data.get('email')
+
+    # subscriber = Subscriber.active.all()
+
     else:
         signin_form = News()
     return render(request, 'blog/post/newsletter.html', {'register_form': signin_form})
@@ -115,3 +120,13 @@ def archive(request):
         container.append(p.publish.year)
     container = list(set(container))
     return render(request, 'blog/post/archive.html', {'years': container})
+
+
+
+
+# def like(request):
+#     if request.method == 'POST':
+#         slug = request.POST.get('slug', None)
+#         post = get_object_or_404(Post, slug=slug)
+
+#         if post.likes.filter(id=)

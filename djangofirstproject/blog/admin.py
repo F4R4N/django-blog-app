@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import Post, Comment,Subscriber
+from .models import Post, Comment, Subscriber, Newsletter
+from django.core.mail import send_mail
+import os
+
+my_email = os.environ.get('PTSEENV')
 
 
 # admin.site.register(Post)
@@ -20,9 +24,45 @@ class CommentAdmin(admin.ModelAdmin):
     list_filter = ('active', 'created', 'updated')
     search_fields = ('name', 'email', 'body')
 
+
 @admin.register(Subscriber)
 class SubscriberShow(admin.ModelAdmin):
-    list_display = ('name', 'email', 'date', 'status')
+    list_display = ('name', 'email', 'date', 'active')
+
+
+def send_newsletter(self, request, queryset):
+    subscribers = Subscriber.objects.all().filter(active=True)
+    data = queryset
+    subject = ""
+    message = ""
+    for i in queryset:
+        subject = i.subject
+    for j in queryset:
+        message = j.body
+        
+    for user in subscribers:
+        body = "Hello, " + user.name + "\n\n" + message + "\n\n\n" + "" # TODO : add unsubscribe the newsletter
+        email = user.email
+        send_mail(subject, body, my_email, [email])
+
+    send_newsletter.short_description = "send email"
+
+
+@admin.register(Newsletter)
+class NewNewsletter(admin.ModelAdmin):
+    list_display = ('subject', 'body')
+    actions = [send_newsletter]
+
+    
+
+
+
+
+
+
+
+
+
 
 
 

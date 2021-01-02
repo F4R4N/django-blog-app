@@ -14,6 +14,8 @@ urlpatterns = [
     path('search/', views.post_search, name='post_search'),
     path('newsletter/', views.newsletter, name='news_letter'),
     path('archive/<int:year_archive>', views.post_list, name='archive'),
+    # path('like/', views.like, name='like'),
+    
     # path('search/', views.post_list, name='search')
 
 
