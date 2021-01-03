@@ -83,7 +83,7 @@ li a:hover {
     padding-top: 50px;
     margin: 20px;
     float: left;
-    width: 70%;
+    width: 67%;
    
 }
 
@@ -218,3 +218,25 @@ ul.pagination-ul{
     color: #999;
     line-height: 5px;
 }
+.title-img{
+
+	width: 100%;
+}
+/*@media(max-width: 1400px){
+.title-img{
+
+	width: 618px;
+}
+}
+@media(max-width: 600px){
+.title-img{
+
+	width: 418px;
+}
+}
+@media(max-width: 360px){
+.title-img{
+
+	width: 218px;
+}
+}*/

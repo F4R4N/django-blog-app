@@ -21,7 +21,7 @@ class CommentForm(forms.ModelForm):
 
 
 class SearchForm(forms.Form):
-    query = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Search . . .'}))
+    query = forms.CharField(widget=forms.TextInput())
 
 class News(forms.ModelForm):
     class Meta:

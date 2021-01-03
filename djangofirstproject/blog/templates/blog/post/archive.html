@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 <body>
+    <hr>
 	<h3>Archive</h3>
-        <hr>
-	
-<ul>
-    {% for post in posts reversed %}
-        <li class="archive-date">
-            <a href="{% url 'blog:archive' post %}">{{ post }}</a>
-        </li>        
-    {% endfor %}
-</ul>
+	<ul>
+    	{% for post in posts reversed %}
+        	<li class="archive-date">
+            	<a href="{% url 'blog:archive' post %}">{{ post }}</a>
+        	</li>        
+    	{% endfor %}
+	</ul>
 </body>
 </html>
 

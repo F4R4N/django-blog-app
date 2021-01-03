@@ -8,7 +8,7 @@
     Published {{ post.publish }} by {{ post.author }}
 </p>
 <hr>
-<img src="{{ post.image.url }}" width="940px">
+<img class="title-img" src="{{ post.image.url }}">
 <hr>
 <div class="body">
     {{ post.body|markdown }}
@@ -23,7 +23,7 @@
 <h2>you might also like</h2>
 {% for post in similar_posts %}
 <p>
-    <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1> 
+    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
 </p>
 
 {% empty %}

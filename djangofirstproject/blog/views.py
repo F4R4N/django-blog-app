@@ -59,8 +59,8 @@ def post_search(request):
         form = SearchForm(request.GET)
         if form.is_valid():
             query = form.cleaned_data['query']
-            results = Post.published.annotate(similarity=TrigramSimilarity('body', query) + TrigramSimilarity('title', query)).filter(
-                similarity__gt=0.3).order_by('-similarity')
+            # results = Post.published.annotate(similarity=TrigramSimilarity('title', query), ).filter(similarity__gt=0.1).order_by('-similarity')
+            results = Post.published.filter(title__contains=query) or Post.published.filter(body__contains=query) or Post.published.filter(author__username__contains=query)
     return render(request, 'blog/post/search.html', {'form': form, 'query': query, 'results': results})
 
 

@@ -12,12 +12,12 @@
     {% for post in posts %}
         <div class="list">
 
-            <h2>
+            <h1>
                 <a href="{{ post.get_absolute_url }}">
                     {{ post.title }}
                 </a>
-            </h2>
-            <img src="media/{{ post.image }}" style="width:918px;">
+            </h1>
+            <img src="{{ post.image.url }}" class="title-img">
             <p class="tags">
                 Tags:
                 {% for tag in post.tags.all %}
