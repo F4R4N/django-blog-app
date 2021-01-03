@@ -17,7 +17,7 @@
         <li><a href="{% url 'blog:post_list' %}">Home</a></li>
         <li><a href="{% url 'blog:news_letter' %}">News Letter</a></li>
         <li class="search">
-            <form action="{% url 'blog:post_search' %}" method="get">
+            <form class="search" action="{% url 'blog:post_search' %}" method="get">
                 <input class="search-input" name="query" type="search" placeholder="Search  .  .  .  ">
                 <!-- <button type="submit"><i class="fas fa-search"></i></button> -->
             </form>
